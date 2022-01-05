@@ -18,7 +18,7 @@ function App() {
           </Link>
           <Button size="large"
           onClick={function(){
-            history.push("./upload")
+            history.push("../upload")
           }}
           icon={<DownloadOutlined/>}>
             상품 업로드

@@ -2,14 +2,16 @@ import {useParams} from "react-router-dom"
 import axios from "axios"
 import { useEffect, useState } from "react";
 import "./index.css"
+import {API_URL} from "../config/constants.js"
+
 function ProductPage(){
     const {id} = useParams();
     const [product, setProduct] = useState(null);
 
     useEffect(function(){  
-        axios.get(`https://b3969ad8-1137-40eb-b596-d2458c74fe8e.mock.pstmn.io/products/${id}`)
+        axios.get(`${API_URL}/products/${id}`)
         .then(function (result){
-            setProduct(result.data)
+            setProduct(result.data.product)
             console.log(result);
         })
         .catch(function (error){
@@ -34,7 +36,7 @@ function ProductPage(){
             <div id="contents-box">
                 <div id="name">{product.name}</div>
                 <div id="price">{product.price}원</div>
-                <div id="createAt">2022년 01월 03일</div>
+                <div id="createAt">{product.createdAt}</div>
                 <div id="description">{product.description}</div>
             </div>
         </div>
